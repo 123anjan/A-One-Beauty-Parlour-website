@@ -1,0 +1,303 @@
+/* ==========================================================================
+   A-ONE BEAUTY PARLOUR - PROFESSIONAL ANIMATIONS
+   Luxury & Smooth Animations (Keyframes, Scroll Reveals & Micro-Interactions)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. KEYFRAME DEFINITIONS
+   -------------------------------------------------------------------------- */
+
+/* Smooth Fade Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slow ambient background drift */
+@keyframes driftBackground {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(0, -10px, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+}
+
+/* Gentle float for cards and decorative shapes */
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Subtle Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero Content Slide Down */
+@keyframes heroSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle Gold Accent Shimmer Effect for Primary Buttons */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Gentle Pulse for Badges */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(197, 160, 89, 0);
+  }
+}
+
+/* Divider Line Expand Animation */
+@keyframes expandDivider {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 50px;
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. HERO ENTRANCE ANIMATIONS (Trigger on Load)
+   -------------------------------------------------------------------------- */
+.hero-badge {
+  animation: heroSlideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.hero-title {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.hero-subtitle {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.hero-actions {
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.hero-location-pill {
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. SCROLL-TRIGGERED REVEAL CLASSES (Controlled via JS IntersectionObserver)
+   -------------------------------------------------------------------------- */
+
+/* Default Hide State for Reveal Elements */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Active Visible State */
+.reveal.active,
+.reveal-fade.active,
+.reveal-scale.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered Delay Utilities for Cards & Grids */
+.delay-1 {
+  transition-delay: 0.1s;
+}
+.delay-2 {
+  transition-delay: 0.2s;
+}
+.delay-3 {
+  transition-delay: 0.3s;
+}
+.delay-4 {
+  transition-delay: 0.4s;
+}
+
+/* Animate Section Dividers when scrolled into view */
+.divider {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   4. LUXURY MICRO-INTERACTIONS & HOVER STATES
+   -------------------------------------------------------------------------- */
+
+/* Smooth Card Hover Elevation & Subtle Glow */
+.service-card,
+.why-card,
+.contact-info-card,
+.map-card {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(42, 36, 33, 0.09);
+  border-color: rgba(197, 160, 89, 0.4);
+}
+
+/* Shimmer Highlight on Primary Buttons */
+.btn-gold,
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::after,
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transition: var(--transition);
+}
+
+.btn-gold:hover::after,
+.btn-primary:hover::after {
+  animation: goldShimmer 1.5s infinite;
+}
+
+/* Gallery Image Zoom & Overlay Reveal */
+.gallery-item .gallery-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-overlay {
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  backdrop-filter: blur(3px);
+}
+
+/* Ambient hero motion */
+.hero-bg-img {
+  animation: driftBackground 15s ease-in-out infinite alternate;
+}
+
+.about-image-card,
+.map-card,
+.contact-info-card,
+.why-card {
+  animation: floatCard 9s ease-in-out infinite;
+}
+
+/* Interactive Navigation Links */
+.nav-link::after {
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Pulse effect for gold badges */
+.hero-badge {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   5. ACCESSIBILITY (PREFERS-REDUCED-MOTION)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal,
+  .reveal-fade,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-badge,
+  .hero-title,
+  .hero-subtitle,
+  .hero-actions,
+  .hero-location-pill {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
